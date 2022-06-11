@@ -14,6 +14,8 @@ DEPS_DIR=dep
 DEPS=$(addprefix $(DEPS_DIR)/, $(SRCS:.c=.d))
 NAME=libavl.a
 
+-include $(DEPS)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
