@@ -14,8 +14,6 @@ DEPS_DIR=dep
 DEPS=$(addprefix $(DEPS_DIR)/, $(SRCS:.c=.d))
 NAME=libavl.a
 
--include $(DEPS)
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -30,6 +28,8 @@ $(OBJS_DIR)/%.o: %.c
 	fi;
 	$(CC) $(CFLAGS) -c -MMD -MP -o $@ $<
 	@mv $(OBJS_DIR)/*.d $(DEPS_DIR)/
+
+-include $(DEPS)
 
 clean :
 	rm -fR $(OBJS_DIR) $(DEPS_DIR)
